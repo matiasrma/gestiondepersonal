@@ -1,0 +1,27 @@
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header d-block justify-content-center align-items-center">          
+        <div class="text-center mt-4 name">
+            Ingrese los datos
+        </div>          
+      </div>
+      <div class="modal-body">          
+        <div class="row d-flex justify-content-center align-items-center" id="inputsLogin">              
+          <div class="col-12 col-sm-6 d-flex justify-content-center align-items-center">
+            <input class="m-2" type="text" name="nombre" id="nombre" placeholder="Nombre" [(ngModel)]="nombre" required />                     
+          </div>          
+          <div class="col-12 col-sm-6 d-flex justify-content-center align-items-center">
+            <input [disabled]="disponible" class="m-2" type="text" name="apellido" id="apellido" 
+            (keyup.enter)="Save()"
+            placeholder="Apellido" [(ngModel)]="apellido" required />
+          </div>          
+        </div>          
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="disponible" type="button" class="btn btn-primary" id="btnLogin" (click)="Save()">Ingresar</button>          
+      </div>
+    </div>
+  </div>
+</div>
+  

@@ -1,0 +1,37 @@
+<div class="modal fade" id="qrgenerador" tabindex="-1" aria-labelledby="qrgeneradorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-center">          
+                <div class="qrcodeImage" #parent>
+                    <qrcode 
+                        [qrdata]="qrdata"
+                        [allowEmptyString]="true"
+                        [ariaLabel]="qrdata"
+                        [cssClass]="'center'"
+                        [colorDark]="'#000000ff'"
+                        [colorLight]="'#ffffffff'"
+                        [elementType]="'canvas'"
+                        [errorCorrectionLevel]="'M'"
+                        [margin]="4"
+                        [scale]="1"
+                        [title]="qrdata"
+                        [width]="300"
+                    ></qrcode>                    
+                </div>
+                <p>{{qrdata}} </p>
+            </div>
+            <div class="modal-body">          
+                <div class="row d-flex justify-content-center align-items-center" id="inputsLogin">              
+                    <div class="col-12 col-sm-6 d-flex justify-content-center align-items-center">                        
+                        <select name="item.personaLegajo" [(ngModel)]="qrdata">
+                            <option [value]="item.personaLegajo" *ngFor="let item of listaPersonas">{{item.personaNombre}} {{item.personaApellido}} ({{item.personaLegajo}})</option>
+                        </select>                                        
+                    </div>
+                    <div class="col-12 col-sm-6 d-flex justify-content-center align-items-center">
+                        <button [disabled]="disponible" type="button" class="btn btn-primary" id="btnLogin" (click)="SaveQR(parent)">Descargar QR</button>          
+                    </div>          
+                </div>
+            </div>        
+        </div>
+    </div>
+</div>

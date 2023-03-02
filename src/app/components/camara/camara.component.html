@@ -1,0 +1,90 @@
+<app-persona-ingreso></app-persona-ingreso> 
+<app-qr-code></app-qr-code>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-sm-5 col-lg-3">      
+      <div class="d-flex flex-column">                
+        <div class="m-2 d-flex justify-content-center">
+          <div class="dropdown">
+            <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Menu
+            </a>          
+            <ul class="dropdown-menu">
+              <li>
+                  <a class="dropdown-item" href="#"
+                  data-bs-toggle="modal" data-bs-target="#modal">
+                    Angregar ingreso
+                  </a>
+              </li>              
+              <li>
+                <a class="dropdown-item" href="#"
+                data-bs-toggle="modal" data-bs-target="#qrgenerador">
+                  Descargar QR
+                </a>
+            </li>              
+            </ul>
+          </div>
+        </div>
+        <div class="m-2 card d-flex justify-content-center" id="selectorCamera">
+          <select #selectList (change)="selectCamera(selectList.value)">
+            <option *ngFor="let camera of cameras" value={{camera.label}}>
+              {{ camera.label }}
+            </option>
+          </select>
+        </div>
+        <div class="m-2 d-flex justify-content-center" style="position: relative;">
+          <zxing-scanner #camera
+            [enable]="scannerEnabled"
+            [device]="myDevice"
+            (camerasFound)="camerasFoundHandler($event)"
+            (scanSuccess)="scanSuccessHandler($event)"
+          ></zxing-scanner>
+          <div id="blanco" [ngClass]="capturando" ></div>
+        </div>
+        <div *ngIf="mensaje" class="m-1 d-flex justify-content-center" id="psaludo">
+          <p style="font-size: small;">{{mensaje}}</p>
+        </div>
+        <div class="row flex-row card mx-2 pt-2 justify-content-center p-2">
+          <span class="col-12 m-2 d-flex justify-content-between">
+            <i class="bi bi-hand-index"></i>
+            <p>Escanee el QR</p>          
+            <i class="bi bi-hand-index"></i>
+          </span>     
+          <span class="col-12 m-2 d-flex justify-content-center">            
+            <p class="m-2">O ingrese numero de legajo</p>      
+          </span>              
+          <span class="col-12 m-2 d-flex justify-content-center">            
+            <input [(ngModel)]="inputLegajo" type="numer" placeholder="00000" #inputBox (keyup.enter)="scanSuccessHandler(inputBox.value)">
+          </span>     
+        </div>
+        <div *ngIf="saludo && ultimaNombre" class="row flex-row card mx-2 pt-2">          
+          <div class="m-2 d-flex justify-content-center" id="psaludo">
+            <p>{{saludo}} {{ultimaNombre}}!</p>            
+          </div>
+        </div>                
+      </div>      
+    </div> 
+    <div class="col-12 col-sm-7 col-lg-9 mt-2">   
+      <div class="table-responsive">      
+        <table class="table">
+          <thead>
+            <tr class="table d-flex" id="cabecera">
+              <th class="table d-flex justify-content-center m-0">Fecha y Hora</th>
+              <th class="table d-flex justify-content-center m-0">Nombre</th>
+              <th class="table d-flex justify-content-center m-0">Estado</th>
+              <th class="table d-flex justify-content-center m-0">Legajo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr [className]="fichada.fichadaEstado + ' table d-flex m-0'" *ngFor="let fichada of listaFichadas">
+              <td class="table d-flex justify-content-center align-items-center m-0">{{fichada.fichadaFH | date: "dd/MM/yyyy HH:mm"}}</td>
+              <td class="table d-flex justify-content-center align-items-center m-0">{{fichada.persona_personaNombre}} {{fichada.persona_personaApellido}}</td>
+              <td class="table d-flex justify-content-center align-items-center m-0">{{fichada.fichadaEstado}}</td>
+              <td class="table d-flex justify-content-center align-items-center m-0">{{fichada.persona_personaLegajo}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>   
+    </div>    
+  </div>
+</div>
