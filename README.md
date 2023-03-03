@@ -1,12 +1,12 @@
 # Fichadas
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
-
 This poject need a backend server to resolve this query:
  - GET  /persona => Return a list of persona
  - POST /personal/{obj: persona} => Post a new persona on DB and return a new persona 
  - GET  /fichada => Return a list of fichada
  - POST /fichada => Post a new fichada on DB
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
 
 ## Development server
 

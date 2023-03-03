@@ -1,36 +1,46 @@
 <app-persona-ingreso></app-persona-ingreso> 
 <app-qr-code></app-qr-code>
 <div class="container-fluid">
-  <div class="row">
+  <div class="row">    
     <div class="col-12 col-sm-5 col-lg-3">      
-      <div class="d-flex flex-column">                
-        <div class="m-2 d-flex justify-content-center">
-          <div class="dropdown">
-            <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Menu
-            </a>          
-            <ul class="dropdown-menu">
-              <li>
+      <div class="d-flex flex-column">                        
+        <div class="m-2 d-flex justify-content-start">
+          <div class="d-flex justify-content-start">            
+              <button class="btn-menu d-flex justify-content-between align-items-center"
+                data-bs-toggle="dropdown">
+                <div>
+                  <div class="barras d-flex justify-content-between">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>                
+                </div>
+                <h4 class="my-2">Menu</h4>
+              </button>       
+              <ul class="dropdown-menu">
+                <li>
                   <a class="dropdown-item" href="#"
                   data-bs-toggle="modal" data-bs-target="#modal">
                     Angregar ingreso
                   </a>
-              </li>              
-              <li>
-                <a class="dropdown-item" href="#"
-                data-bs-toggle="modal" data-bs-target="#qrgenerador">
-                  Descargar QR
-                </a>
-            </li>              
-            </ul>
-          </div>
-        </div>
-        <div class="m-2 card d-flex justify-content-center" id="selectorCamera">
-          <select #selectList (change)="selectCamera(selectList.value)">
-            <option *ngFor="let camera of cameras" value={{camera.label}}>
-              {{ camera.label }}
-            </option>
-          </select>
+                </li>              
+                <li>
+                  <a class="dropdown-item" href="#"
+                  data-bs-toggle="modal" data-bs-target="#qrgenerador">
+                    Descargar QR
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li>                                                  
+                  <p class="dropdown-item-text">Seleccionar Camara:</p>                  
+                  <select #selectList (change)="selectCamera(selectList.value)" class="dropdown-item">
+                    <option *ngFor="let camera of cameras" value={{camera.label}}>
+                      {{ camera.label }}
+                    </option>
+                  </select> 
+                </li>
+              </ul>            
+          </div>          
         </div>
         <div class="m-2 d-flex justify-content-center" style="position: relative;">
           <zxing-scanner #camera
