@@ -1,39 +1,7 @@
-.Ingreso {
-    background-color: lightblue;    
-    font-weight: 500;
-    border-color: black;
-    border-width: 0.15rem;
-    
-}
-
-.Salida {    
-    font-weight: 500;
-    border-color: black;
-    border-width: 0.15rem;
-    
-}
-
-#cabecera {
-    background-color: lightgray;
-    font-weight: 800;
-    font-size: large;
-    border-color: black;
-    border-width: 0.15rem;
-}
-
 input {
     text-align: center; 
     border-radius: 5px;
     border-color: darkblue;
-}
-
-tr {
-    border-radius: 8px;
-    border-top: 0px;
-}
-
-td {
-    text-align: center;
 }
 
 #psaludo {
@@ -47,26 +15,42 @@ i {
     padding-top: 0px;
 }
 
+zxing-scanner {
+    margin: 3px;    
+    transform: rotate3d(0, 1, 0, 180deg);
+}
+
+#marco {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 98%;    
+    border: 5px;
+    border-style: solid;
+    border-color: black;    
+    border-radius: 10px;        
+}
+
 #blanco {
     position: absolute;
     z-index: 1;    
-    height: 97%;
-    width: 3%;    
-    left: 0%;
-    background-color: red;
+    height: 100%;
+    width: 98%;            
+    background-color: white;
+    opacity: 0;
 }
 
 .captura-lista {    
-    animation-name: example;
-    animation-duration: 0.5s;
+    animation-name: flash;
+    animation-duration: 0.15s;
     animation-iteration-count: 2;
     animation-timing-function: linear;
     animation-direction: alternate;
 }
 
-@keyframes example {    
-    0%   {left: 0%;}
-    100% {left: 100%;}
+@keyframes flash {    
+    0%   {opacity: 0%;}
+    100% {opacity: 100%;}
 }
 
 .btn-menu {
@@ -112,5 +96,14 @@ i {
 @media (max-width: 768px) {
     zxing-scanner {
         width: 300px;
+    }
+}
+
+@media (max-width: 576px){
+    #marco {
+        max-width: 307px;
+    }
+    #blanco {        
+        max-width: 307px;
     }
 }

@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { PersonaIngresoComponent } from './components/persona-ingreso/persona-ingreso.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { QrCodeComponent } from './components/qr-code/qr-code.component';
+import { PresentesComponent } from './components/presentes/presentes.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { QrCodeComponent } from './components/qr-code/qr-code.component';
     CamaraComponent,
     FichadasComponent,
     PersonaIngresoComponent,
-    QrCodeComponent    
+    QrCodeComponent,
+    PresentesComponent    
   ],
   imports: [
     BrowserModule,

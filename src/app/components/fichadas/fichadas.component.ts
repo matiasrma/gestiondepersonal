@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Fichada } from 'src/Models/fichada';
+import { FichadaService } from 'src/Services/fichada.service';
 
 @Component({
   selector: 'app-fichadas',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FichadasComponent implements OnInit {
 
-  constructor() { }
+  @Input() listaFichadas: Fichada[] = [];
 
-  ngOnInit(): void {
+  constructor() { 
   }
+
+  ngOnInit(): void {    
+  }
+
+
 
 }

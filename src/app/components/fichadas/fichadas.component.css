@@ -1,0 +1,31 @@
+.Ingreso {
+    background-color: lightblue;    
+    font-weight: 500;
+    border-color: black;
+    border-width: 0.15rem;
+    
+}
+
+.Salida {    
+    font-weight: 500;
+    border-color: black;
+    border-width: 0.15rem;
+    
+}
+
+#cabecera {
+    background-color: lightgray;
+    font-weight: 800;
+    font-size: large;
+    border-color: black;
+    border-width: 0.15rem;
+}
+
+tr {
+    border-radius: 8px;
+    border-top: 0px;
+}
+
+td {
+    text-align: center;
+}

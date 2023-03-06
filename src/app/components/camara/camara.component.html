@@ -30,6 +30,12 @@
                     Descargar QR
                   </a>
                 </li>
+                <li><hr class="dropdown-divider"></li>                
+                <li>
+                  <a class="dropdown-item" href="#"
+                  (click)="mostarOcultarFichada()" [innerHTML]="menuMostarOcultar">                    
+                  </a>
+                </li>
                 <li><hr class="dropdown-divider"></li>
                 <li>                                                  
                   <p class="dropdown-item-text">Seleccionar Camara:</p>                  
@@ -42,13 +48,14 @@
               </ul>            
           </div>          
         </div>
-        <div class="m-2 d-flex justify-content-center" style="position: relative;">
+        <div class="d-flex justify-content-center" style="position: relative;">
           <zxing-scanner #camera
             [enable]="scannerEnabled"
             [device]="myDevice"
             (camerasFound)="camerasFoundHandler($event)"
             (scanSuccess)="scanSuccessHandler($event)"
           ></zxing-scanner>
+          <div id="marco"></div>
           <div id="blanco" [ngClass]="capturando" ></div>
         </div>
         <div *ngIf="mensaje" class="m-1 d-flex justify-content-center" id="psaludo">
@@ -67,34 +74,16 @@
             <input [(ngModel)]="inputLegajo" type="numer" placeholder="00000" #inputBox (keyup.enter)="scanSuccessHandler(inputBox.value)">
           </span>     
         </div>
-        <div *ngIf="saludo && ultimaNombre" class="row flex-row card mx-2 pt-2">          
-          <div class="m-2 d-flex justify-content-center" id="psaludo">
+        <div *ngIf="saludo && ultimaNombre" class="row flex-row card m-2 pt-2">          
+          <div class="d-flex justify-content-center" id="psaludo">
             <p>{{saludo}} {{ultimaNombre}}!</p>            
           </div>
         </div>                
       </div>      
     </div> 
     <div class="col-12 col-sm-7 col-lg-9 mt-2">   
-      <div class="table-responsive">      
-        <table class="table">
-          <thead>
-            <tr class="table d-flex" id="cabecera">
-              <th class="table d-flex justify-content-center m-0">Fecha y Hora</th>
-              <th class="table d-flex justify-content-center m-0">Nombre</th>
-              <th class="table d-flex justify-content-center m-0">Estado</th>
-              <th class="table d-flex justify-content-center m-0">Legajo</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr [className]="fichada.fichadaEstado + ' table d-flex m-0'" *ngFor="let fichada of listaFichadas">
-              <td class="table d-flex justify-content-center align-items-center m-0">{{fichada.fichadaFH | date: "dd/MM/yyyy HH:mm"}}</td>
-              <td class="table d-flex justify-content-center align-items-center m-0">{{fichada.persona_personaNombre}} {{fichada.persona_personaApellido}}</td>
-              <td class="table d-flex justify-content-center align-items-center m-0">{{fichada.fichadaEstado}}</td>
-              <td class="table d-flex justify-content-center align-items-center m-0">{{fichada.persona_personaLegajo}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>   
+      <app-presentes [lista]="listaFichadas"></app-presentes>      
+      <app-fichadas [listaFichadas]="listaFichadas" *ngIf="fichadaShow"></app-fichadas>
     </div>    
   </div>
 </div>

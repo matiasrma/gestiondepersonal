@@ -1,0 +1,21 @@
+<div class="table-responsive">      
+    <table class="table">
+        <thead>
+            <tr class="table d-flex" id="cabecera">                
+                <th class="table d-flex justify-content-center m-0">PRESENTES</th>                                
+            </tr>
+        </thead>
+        <thead>
+            <tr class="table d-flex" id="cabecera">                
+                <th class="table d-flex justify-content-center m-0">Nombre</th>                
+                <th class="table d-flex justify-content-center m-0">Legajo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr [className]="fichada.fichadaEstado + ' table d-flex m-0'" *ngFor="let fichada of filtrar(lista)">                
+                <td class="table d-flex justify-content-center align-items-center m-0">{{fichada.persona_personaNombre}} {{fichada.persona_personaApellido}}</td>                
+                <td class="table d-flex justify-content-center align-items-center m-0">{{fichada.persona_personaLegajo}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
